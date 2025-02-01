@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Face Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        canvas {
+            border: 2px solid #333;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="faceCanvas" width="300" height="300"></canvas>
+
+    <script>
+        const canvas = document.getElementById('faceCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Load images
+        const sadFace = new Image();
+        const smileyFace = new Image();
+
+        sadFace.src = 'img/images.jpeg';
+        smileyFace.src = 'img/images.jpeg';
+
+        let isMouseDown = false;
+
+        // Function to draw the sad face
+        function drawSadFace() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+            ctx.drawImage(sadFace, 0, 0, canvas.width, canvas.height); // Draw sad face
+        }
+
+        // Function to draw the smiley face with scaling
+        function drawSmileyFace() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+            ctx.save(); // Save the current canvas state
+            ctx.scale(1.2, 1.2); // Scale the canvas
+            ctx.drawImage(smileyFace, -30, -30, canvas.width, canvas.height); // Draw smiley face with offset
+            ctx.restore(); // Restore the canvas state
+        }
+
+        // Event listeners for mouse down and up
+        canvas.addEventListener('mousedown', () => {
+            isMouseDown = true;
+            drawSmileyFace(); // Draw smiley face on mouse down
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isMouseDown = false;
+            drawSadFace(); // Draw sad face on mouse up
+        });
+
+        // Load the sad face initially
+        sadFace.onload = () => {
+            drawSadFace();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive SVG Face</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        svg {
+            width: 300px;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .organ {
+            transition: fill 0.3s ease;
+        }
+
+        .organ:hover {
+            fill: #ffcc00;
+            /* Change color on hover */
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SVG Face -->
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Face Outline -->
+        <circle cx="50" cy="50" r="45" fill="#f4d03f" class="organ" data-name="Face" />
+
+        <!-- Left Eye -->
+        <ellipse cx="35" cy="40" rx="5" ry="8" fill="#ffffff" class="organ" data-name="Left Eye" />
+        <circle cx="35" cy="40" r="3" fill="#000000" class="organ" data-name="Left Eye" />
+
+        <!-- Right Eye -->
+        <ellipse cx="65" cy="40" rx="5" ry="8" fill="#ffffff" class="organ" data-name="Right Eye" />
+        <circle cx="65" cy="40" r="3" fill="#000000" class="organ" data-name="Right Eye" />
+
+        <!-- Nose -->
+        <polygon points="50,45 45,60 55,60" fill="#ffffff" class="organ" data-name="Nose" />
+
+        <!-- Mouth -->
+        <path d="M 40 70 Q 50 80 60 70" stroke="#000000" stroke-width="2" fill="transparent" class="organ"
+            data-name="Mouth" />
+    </svg>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <script>
+        // Get all organ elements
+        const organs = document.querySelectorAll('.organ');
+        const tooltip = document.getElementById('tooltip');
+
+        // Add event listeners for hover
+        organs.forEach(organ => {
+            organ.addEventListener('mouseover', () => {
+                // Change background color on hover
+                organ.style.fill = '#ffcc00';
+
+                // Show tooltip with organ name
+                tooltip.textContent = organ.getAttribute('data-name');
+                tooltip.style.display = 'block';
+                tooltip.style.left = `${event.pageX + 10}px`;
+                tooltip.style.top = `${event.pageY + 10}px`;
+            });
+
+            organ.addEventListener('mouseout', () => {
+                // Reset background color on mouse out
+                organ.style.fill = organ.getAttribute('data-original-color');
+
+                // Hide tooltip
+                tooltip.style.display = 'none';
+            });
+
+            // Store original color for resetting
+            organ.setAttribute('data-original-color', organ.style.fill);
+        });
+    </script>
+</body>
+
+</html>
+
+lab-0

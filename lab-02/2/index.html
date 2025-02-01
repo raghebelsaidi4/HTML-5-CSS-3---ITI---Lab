@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Div with Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .image {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .image img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+
+        .content {
+            width: 200px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 20px;
+            color: #888;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        /* Class to hide the content */
+        .hidden {
+            transform: translateX(-100%);
+            opacity: 0;
+            width: 0;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image">
+            <img src="img/images.jpeg" alt="Placeholder Image">
+        </div>
+        <div class="content" id="content">
+            <p>This is the content next to the image. Click the "x" to close it, and click the image to open it again.
+            </p>
+        </div>
+        <div class="close-btn" id="closeBtn">×</div>
+    </div>
+
+    <script>
+        const content = document.getElementById('content');
+        const closeBtn = document.getElementById('closeBtn');
+        const image = document.querySelector('.image');
+
+        // Function to toggle the visibility of the content
+        function toggleContent() {
+            content.classList.toggle('hidden');
+        }
+
+        // Event listener for the close button
+        closeBtn.addEventListener('click', toggleContent);
+
+        // Event listener for the image
+        image.addEventListener('click', toggleContent);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2>Drag the correct letters into the box</h2>
+    
+    <!-- Target Drop Area -->
+    <div id="drop-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+        Letter A
+    </div>
+
+    <!-- Draggable Elements -->
+    <div class="letters">
+        <div id="letter-A" class="draggable" draggable="true" ondragstart="drag(event)">A</div>
+        <div id="letter-C" class="draggable" draggable="true" ondragstart="drag(event)">C</div>
+        <div id="letter-a" class="draggable" draggable="true" ondragstart="drag(event)">a</div>
+    </div>
+
+    <p>Score: <span id="score">0</span></p>
+
+    <script>
+        // Load score from sessionStorage or set to 0
+        let score = sessionStorage.getItem("score") ? parseInt(sessionStorage.getItem("score")) : 0;
+        document.getElementById("score").innerText = score;
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            let draggedId = event.dataTransfer.getData("text");
+            let draggedElement = document.getElementById(draggedId);
+            let dropBox = document.getElementById("drop-box");
+
+            // Only allow "A" or "a" to be dropped
+            if (draggedId === "letter-A" || draggedId === "letter-a") {
+                dropBox.appendChild(draggedElement);
+                dropBox.style.backgroundColor = "#90ee90"; // Light Green on Correct Drop
+                score += 10;
+            } else {
+                draggedElement.style.position = "absolute"; // Reset position
+                draggedElement.style.left = draggedElement.dataset.originalX + "px";
+                draggedElement.style.top = draggedElement.dataset.originalY + "px";
+                score -= 5;
+            }
+
+            // Save score to sessionStorage
+            sessionStorage.setItem("score", score);
+            document.getElementById("score").innerText = score;
+        }
+
+        // Store original positions of letters
+        document.querySelectorAll(".draggable").forEach(element => {
+            element.dataset.originalX = element.offsetLeft;
+            element.dataset.originalY = element.offsetTop;
+        });
+    </script>
+
+</body>
+
+</html>

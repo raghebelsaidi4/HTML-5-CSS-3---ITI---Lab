@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with Icons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #333;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 15px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar ul li a i {
+            margin-right: 5px;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #555;
+        }
+
+        .navbar ul li a:hover i {
+            color: #ffcc00;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i>About</a></li>
+            <li><a href="#"><i class="fas fa-briefcase"></i>Services</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i>Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <p>
+            This is a paragraph using the custom font "Poppins" from Google Fonts.
+            The font is clean and modern, making it suitable for a variety of web designs.
+            You can easily integrate it into your project by following the steps above.
+        </p>
+    </div>
+</body>
+
+</html>

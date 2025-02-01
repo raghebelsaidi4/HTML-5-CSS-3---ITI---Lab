@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Drawing and Erasing</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        canvas {
+            border: 2px solid #333;
+            background-color: #fff;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="drawingCanvas" width="800" height="600"></canvas>
+
+    <script>
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let isDrawing = false;
+        let isErasing = false;
+
+        // Set initial drawing styles
+        ctx.strokeStyle = '#000000'; // Drawing color
+        ctx.lineWidth = 5; // Drawing line width
+        ctx.lineCap = 'round'; // Rounded line ends
+
+        // Function to start drawing or erasing
+        function startDrawing(event) {
+            isDrawing = true;
+            isErasing = event.button === 2; // Right-click for erasing
+            draw(event); // Start drawing immediately
+        }
+
+        // Function to stop drawing or erasing
+        function stopDrawing() {
+            isDrawing = false;
+            isErasing = false;
+            ctx.beginPath(); // Reset the drawing path
+        }
+
+        // Function to draw or erase
+        function draw(event) {
+            if (!isDrawing) return;
+
+            // Get mouse position relative to the canvas
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            if (isErasing) {
+                // Erase by drawing with the background color
+                ctx.strokeStyle = '#ffffff'; // White color for erasing
+                ctx.lineWidth = 20; // Larger line width for erasing
+            } else {
+                // Draw with the selected color
+                ctx.strokeStyle = '#000000'; // Black color for drawing
+                ctx.lineWidth = 5; // Normal line width for drawing
+            }
+
+            // Draw a line to the current mouse position
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        // Event listeners
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // Prevent the context menu on right-click
+        canvas.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>

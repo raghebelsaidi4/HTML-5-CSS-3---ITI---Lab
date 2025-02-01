@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background: #f9f9f9;
+    padding: 20px;
+}
+header{
+    text-align: center;
+    background: #ff8800;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+.profile img{
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    height: 100px;
+}
+main{
+    max-width: 100%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+h2{
+    border-bottom: 2px solid #ff8800;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.contact, .skills, .experience, .education {
+    margin-bottom: 20px;
+}
+
+.skill-bar {
+    width: 100%;
+    background: #ddd;
+    height: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: #ff8800;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    main {
+        width: 90%;
+    }
+}
+video {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}

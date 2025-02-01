@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="profile">
+            <img src="img/images.jpeg" alt="Profile Picture">
+            <h1>Ragheb Elsaedy</h1>
+            <p>Java Developer</p>
+            <time datetime="2003-02-01">January 1, 2003</time>
+        </div>
+    </header>
+
+    <main>
+        <section class="about">
+            <h2>About Me</h2>
+            <p>Hi, I'm Ragheb Elsaedy, a Java Developer based in Egypt. I enjoy creating modern and responsive websites
+                using HTML, CSS, and JavaScript. I have experience working on front-end development projects, improving
+                UI/UX design. I'm passionate about learning new technologies and always looking for new challenges.</p>
+            <video id="introVideo" autoplay loop muted onclick="this.pause()">
+                <source src="video/intro.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+        <section class="contact" onclick="document.getElementById('ringtone').play()">
+            <h2>Contact</h2>
+            <p>📍 Address: Nasr City, Egypt</p>
+            <p>📧 Email: rahebelsaidi416@email.com</p>
+            <p>📞 Phone: +123 456 7890</p>
+        </section>
+
+        <section class="skills">
+            <h2>Skills</h2>
+            <article>
+                <p>HTML</p>
+                <div class="skill-bar">
+                    <div class="fill" style="width: 90%;"></div>
+                </div>
+            </article>
+            <article>
+                <p>CSS</p>
+                <div class="skill-bar">
+                    <div class="fill" style="width: 80%;"></div>
+                </div>
+            </article>
+            <article>
+                <p>JavaScript</p>
+                <div class="skill-bar">
+                    <div class="fill" style="width: 75%;"></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="experience">
+            <h2>Work Experience</h2>
+            <article>
+                <h3>Web Developer - ABC Company</h3>
+                <time datetime="2021-01">Jan 2021 - Present</time>
+                <p>Developed modern and responsive websites using HTML, CSS, and JavaScript.</p>
+            </article>
+            <article>
+                <h3>Intern - XYZ Tech</h3>
+                <time datetime="2019-06">Jun 2019 - Dec 2020</time>
+                <p>Worked on front-end development projects, improving UI/UX design.</p>
+            </article>
+        </section>
+
+        <section class="education">
+            <h2>Education</h2>
+            <article>
+                <h3>Bachelor in Computer Science</h3>
+                <time datetime="2015-09">2015 - 2019</time>
+                <p>XYZ University</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2021 Ragheb Elsaedy | <a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
+    </footer>
+
+    <!-- Hidden Audio Element -->
+    <audio id="ringtone" src="audio/ringtone.mp3"></audio>
+</body>
+
+</html>
